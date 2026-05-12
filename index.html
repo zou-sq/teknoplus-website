@@ -1,0 +1,994 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tekno Plus – Official Insta360 Distributor Indonesia</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;900&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --blue-deep: #030d1f;
+    --blue-mid: #0a2a5e;
+    --blue-bright: #1557e8;
+    --blue-electric: #3d8ef0;
+    --blue-light: #7ab8ff;
+    --blue-glow: #4fa3ff;
+    --accent: #00d4ff;
+    --white: #ffffff;
+    --white-80: rgba(255,255,255,0.8);
+    --white-50: rgba(255,255,255,0.5);
+    --white-20: rgba(255,255,255,0.2);
+    --white-10: rgba(255,255,255,0.08);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--blue-deep);
+    color: var(--white);
+    font-family: 'Barlow', sans-serif;
+    overflow-x: hidden;
+  }
+
+  /* ── LANGUAGE SWITCHER ── */
+  .lang-switcher {
+    position: fixed;
+    top: 1.2rem;
+    right: 1.5rem;
+    z-index: 9999;
+    display: flex;
+    gap: 0.4rem;
+  }
+  .lang-btn {
+    background: var(--white-10);
+    border: 1px solid var(--white-20);
+    color: var(--white-80);
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 600;
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+    transition: all 0.2s;
+  }
+  .lang-btn.active, .lang-btn:hover {
+    background: var(--blue-bright);
+    border-color: var(--blue-electric);
+    color: white;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 1000;
+    padding: 1rem 4vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    backdrop-filter: blur(20px);
+    background: rgba(3,13,31,0.7);
+    border-bottom: 1px solid var(--white-10);
+  }
+  .nav-logo {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 1.6rem;
+    letter-spacing: 0.05em;
+    background: linear-gradient(90deg, var(--white), var(--blue-light));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-decoration: none;
+  }
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+  .nav-links a {
+    color: var(--white-80);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--accent); }
+  .nav-cta {
+    background: linear-gradient(135deg, var(--blue-bright), var(--blue-electric));
+    color: white !important;
+    padding: 0.5rem 1.2rem;
+    border-radius: 6px;
+    font-weight: 600 !important;
+  }
+  .nav-cta:hover { opacity: 0.9; }
+
+  /* ── HERO ── */
+  #hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    padding: 8rem 4vw 4rem;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 30%, rgba(21,87,232,0.35) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 40% at 20% 70%, rgba(0,212,255,0.15) 0%, transparent 60%),
+      radial-gradient(ellipse 50% 50% at 80% 80%, rgba(61,142,240,0.12) 0%, transparent 60%);
+  }
+
+  .hero-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, black, transparent);
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--white-10);
+    border: 1px solid var(--white-20);
+    border-radius: 30px;
+    padding: 0.4rem 1rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+    backdrop-filter: blur(10px);
+    animation: fadeUp 0.8s ease both;
+  }
+  .hero-badge-dot {
+    width: 8px; height: 8px;
+    background: var(--accent);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(1.3); }
+  }
+
+  .hero-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: clamp(3.5rem, 10vw, 7rem);
+    line-height: 0.95;
+    letter-spacing: -0.01em;
+    margin-bottom: 1.2rem;
+    animation: fadeUp 0.8s 0.1s ease both;
+  }
+  .hero-title .gradient-text {
+    background: linear-gradient(135deg, var(--white) 0%, var(--blue-light) 50%, var(--accent) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-sub {
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    font-weight: 300;
+    color: var(--white-80);
+    max-width: 600px;
+    line-height: 1.6;
+    margin-bottom: 2.5rem;
+    animation: fadeUp 0.8s 0.2s ease both;
+  }
+
+  .hero-btns {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    animation: fadeUp 0.8s 0.3s ease both;
+  }
+  .btn-primary {
+    background: linear-gradient(135deg, var(--blue-bright), var(--accent));
+    color: white;
+    padding: 0.85rem 2rem;
+    border-radius: 8px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    letter-spacing: 0.08em;
+    text-decoration: none;
+    transition: all 0.3s;
+    box-shadow: 0 4px 24px rgba(21,87,232,0.4);
+  }
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px rgba(21,87,232,0.6);
+  }
+  .btn-secondary {
+    background: var(--white-10);
+    color: white;
+    padding: 0.85rem 2rem;
+    border-radius: 8px;
+    border: 1px solid var(--white-20);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    letter-spacing: 0.08em;
+    text-decoration: none;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s;
+  }
+  .btn-secondary:hover {
+    background: var(--white-20);
+    transform: translateY(-2px);
+  }
+
+  .hero-stats {
+    display: flex;
+    gap: 3rem;
+    margin-top: 4rem;
+    animation: fadeUp 0.8s 0.4s ease both;
+  }
+  .hero-stat { text-align: center; }
+  .hero-stat-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 2.2rem;
+    background: linear-gradient(135deg, var(--white), var(--accent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .hero-stat-label {
+    font-size: 0.78rem;
+    color: var(--white-50);
+    letter-spacing: 0.08em;
+    font-weight: 500;
+    margin-top: 0.2rem;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── SECTIONS COMMON ── */
+  section {
+    padding: 6rem 4vw;
+    position: relative;
+  }
+  .section-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    color: var(--accent);
+    margin-bottom: 0.8rem;
+    text-transform: uppercase;
+  }
+  .section-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: clamp(2.2rem, 5vw, 3.5rem);
+    line-height: 1;
+    margin-bottom: 1rem;
+  }
+  .section-desc {
+    color: var(--white-80);
+    font-size: 1.05rem;
+    line-height: 1.7;
+    max-width: 560px;
+    font-weight: 300;
+  }
+  .section-divider {
+    width: 3rem;
+    height: 3px;
+    background: linear-gradient(90deg, var(--blue-bright), var(--accent));
+    border-radius: 2px;
+    margin: 1rem 0 2rem;
+  }
+
+  /* ── ABOUT ── */
+  #about {
+    background: linear-gradient(180deg, var(--blue-deep) 0%, rgba(10,42,94,0.3) 100%);
+  }
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .about-visual {
+    position: relative;
+  }
+  .about-card {
+    background: linear-gradient(135deg, rgba(21,87,232,0.2), rgba(0,212,255,0.1));
+    border: 1px solid rgba(21,87,232,0.3);
+    border-radius: 20px;
+    padding: 3rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .about-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(0,212,255,0.1), transparent 70%);
+  }
+  .about-card-logo {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 4rem;
+    background: linear-gradient(135deg, var(--white), var(--blue-light));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 1rem;
+  }
+  .about-card-desc {
+    color: var(--white-80);
+    font-size: 0.9rem;
+    line-height: 1.7;
+  }
+  .about-tag {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--blue-bright), var(--blue-electric));
+    padding: 0.3rem 0.8rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    margin-top: 1.2rem;
+    font-family: 'Barlow Condensed', sans-serif;
+  }
+  .value-list {
+    list-style: none;
+    margin-top: 1.5rem;
+  }
+  .value-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.8rem;
+    margin-bottom: 1rem;
+    color: var(--white-80);
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+  .value-icon {
+    color: var(--accent);
+    font-size: 1.1rem;
+    flex-shrink: 0;
+    margin-top: 0.1rem;
+  }
+
+  /* ── PRODUCTS ── */
+  #products {
+    background: radial-gradient(ellipse 70% 50% at 50% 50%, rgba(21,87,232,0.12) 0%, transparent 70%);
+  }
+  .products-header {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto 4rem;
+  }
+  .products-header .section-divider { margin: 1rem auto 2rem; }
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .product-card {
+    background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+    border: 1px solid var(--white-10);
+    border-radius: 16px;
+    padding: 2rem;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+  .product-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(21,87,232,0.15), transparent);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .product-card:hover {
+    border-color: rgba(21,87,232,0.5);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(21,87,232,0.2);
+  }
+  .product-card:hover::before { opacity: 1; }
+  .product-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    display: block;
+  }
+  .product-name {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.03em;
+  }
+  .product-desc {
+    color: var(--white-50);
+    font-size: 0.85rem;
+    line-height: 1.6;
+  }
+  .product-badge {
+    display: inline-block;
+    margin-top: 1rem;
+    background: rgba(0,212,255,0.1);
+    border: 1px solid rgba(0,212,255,0.3);
+    color: var(--accent);
+    padding: 0.25rem 0.7rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    font-family: 'Barlow Condensed', sans-serif;
+    letter-spacing: 0.05em;
+  }
+
+  /* ── KOL / PARTNERSHIP ── */
+  #kol {
+    background: linear-gradient(180deg, transparent, rgba(10,42,94,0.4) 50%, transparent);
+  }
+  .kol-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+  }
+  .kol-benefits {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+  .kol-benefit {
+    background: var(--white-10);
+    border: 1px solid var(--white-10);
+    border-radius: 12px;
+    padding: 1.2rem;
+    transition: all 0.2s;
+  }
+  .kol-benefit:hover {
+    border-color: rgba(21,87,232,0.4);
+    background: rgba(21,87,232,0.1);
+  }
+  .kol-benefit-icon { font-size: 1.5rem; margin-bottom: 0.5rem; display: block; }
+  .kol-benefit-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    margin-bottom: 0.3rem;
+    letter-spacing: 0.03em;
+  }
+  .kol-benefit-desc {
+    color: var(--white-50);
+    font-size: 0.8rem;
+    line-height: 1.5;
+  }
+  .kol-cta-box {
+    background: linear-gradient(135deg, rgba(21,87,232,0.25), rgba(0,212,255,0.1));
+    border: 1px solid rgba(21,87,232,0.4);
+    border-radius: 20px;
+    padding: 3rem;
+    text-align: center;
+  }
+  .kol-cta-box h3 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+  .kol-cta-box p {
+    color: var(--white-80);
+    font-size: 0.95rem;
+    line-height: 1.7;
+    margin-bottom: 2rem;
+  }
+
+  /* ── TRUST BADGES ── */
+  #trust {
+    text-align: center;
+  }
+  .trust-inner { max-width: 1200px; margin: 0 auto; }
+  .trust-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+  .trust-card {
+    background: linear-gradient(135deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+    border: 1px solid var(--white-10);
+    border-radius: 16px;
+    padding: 2rem 1.5rem;
+    transition: all 0.3s;
+  }
+  .trust-card:hover {
+    border-color: rgba(21,87,232,0.4);
+    transform: translateY(-4px);
+  }
+  .trust-icon { font-size: 2.5rem; margin-bottom: 1rem; display: block; }
+  .trust-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.03em;
+  }
+  .trust-desc {
+    color: var(--white-50);
+    font-size: 0.83rem;
+    line-height: 1.6;
+  }
+
+  /* ── CONTACT ── */
+  #contact {
+    background: radial-gradient(ellipse 60% 60% at 50% 100%, rgba(21,87,232,0.2) 0%, transparent 70%);
+  }
+  .contact-inner {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+  .contact-items { margin-top: 2rem; }
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    padding: 1rem 1.2rem;
+    background: var(--white-10);
+    border-radius: 10px;
+    border: 1px solid var(--white-10);
+    transition: all 0.2s;
+    text-decoration: none;
+    color: var(--white);
+  }
+  .contact-item:hover {
+    border-color: rgba(21,87,232,0.4);
+    background: rgba(21,87,232,0.1);
+  }
+  .contact-item-icon { font-size: 1.4rem; }
+  .contact-item-label {
+    font-size: 0.75rem;
+    color: var(--white-50);
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-bottom: 0.2rem;
+  }
+  .contact-item-value {
+    font-size: 0.95rem;
+    font-weight: 500;
+  }
+  .warranty-box {
+    background: linear-gradient(135deg, rgba(21,87,232,0.2), rgba(0,212,255,0.1));
+    border: 1px solid rgba(21,87,232,0.3);
+    border-radius: 16px;
+    padding: 2.5rem;
+    text-align: center;
+  }
+  .warranty-shield {
+    font-size: 4rem;
+    display: block;
+    margin-bottom: 1rem;
+  }
+  .warranty-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 1.6rem;
+    margin-bottom: 0.5rem;
+  }
+  .warranty-desc {
+    color: var(--white-80);
+    font-size: 0.9rem;
+    line-height: 1.7;
+  }
+  .warranty-tag {
+    display: inline-block;
+    margin-top: 1rem;
+    background: linear-gradient(135deg, var(--blue-bright), var(--blue-electric));
+    padding: 0.4rem 1.2rem;
+    border-radius: 6px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 0.9rem;
+    letter-spacing: 0.1em;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: rgba(0,0,0,0.4);
+    border-top: 1px solid var(--white-10);
+    padding: 2.5rem 4vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  .footer-logo {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 1.4rem;
+    background: linear-gradient(90deg, var(--white), var(--blue-light));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .footer-copy {
+    color: var(--white-50);
+    font-size: 0.8rem;
+  }
+  .footer-links {
+    display: flex;
+    gap: 1.5rem;
+  }
+  .footer-links a {
+    color: var(--white-50);
+    text-decoration: none;
+    font-size: 0.82rem;
+    transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--accent); }
+
+  /* ── MOBILE ── */
+  @media (max-width: 768px) {
+    nav { padding: 0.8rem 1rem; }
+    .nav-links { display: none; }
+    .hero-stats { gap: 1.5rem; flex-wrap: wrap; justify-content: center; }
+    .about-grid, .kol-inner, .contact-inner { grid-template-columns: 1fr; gap: 2rem; }
+    .products-grid { grid-template-columns: 1fr; }
+    .trust-grid { grid-template-columns: 1fr 1fr; }
+    .kol-benefits { grid-template-columns: 1fr; }
+    footer { flex-direction: column; align-items: center; text-align: center; }
+  }
+
+  /* ── SCROLL ANIMATIONS ── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: none;
+  }
+</style>
+</head>
+<body>
+
+<!-- Language Switcher -->
+<div class="lang-switcher">
+  <button class="lang-btn active" onclick="setLang('en')">EN</button>
+  <button class="lang-btn" onclick="setLang('id')">ID</button>
+</div>
+
+<!-- Nav -->
+<nav>
+  <a href="#hero" class="nav-logo">TEKNO PLUS</a>
+  <ul class="nav-links">
+    <li><a href="#about" data-en="About" data-id="Tentang Kami">About</a></li>
+    <li><a href="#products" data-en="Products" data-id="Produk">Products</a></li>
+    <li><a href="#kol" data-en="KOL Partnership" data-id="Kemitraan KOL">KOL Partnership</a></li>
+    <li><a href="#trust" data-en="Why Us" data-id="Mengapa Kami">Why Us</a></li>
+    <li><a href="#contact" class="nav-cta" data-en="Contact Us" data-id="Hubungi Kami">Contact Us</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-badge">
+    <span class="hero-badge-dot"></span>
+    <span data-en="Official Insta360 Distributor — Indonesia" data-id="Distributor Resmi Insta360 — Indonesia">Official Insta360 Distributor — Indonesia</span>
+  </div>
+  <h1 class="hero-title">
+    <span class="gradient-text">TEKNO</span><br>PLUS
+  </h1>
+  <p class="hero-sub" data-en="Your trusted technology partner in Indonesia. We bring world-class action cameras and imaging technology to creators, adventurers, and businesses." data-id="Mitra teknologi terpercaya Anda di Indonesia. Kami menghadirkan kamera aksi dan teknologi pencitraan kelas dunia untuk para kreator, petualang, dan bisnis.">
+    Your trusted technology partner in Indonesia. We bring world-class action cameras and imaging technology to creators, adventurers, and businesses.
+  </p>
+  <div class="hero-btns">
+    <a href="#products" class="btn-primary" data-en="Explore Products" data-id="Lihat Produk">Explore Products</a>
+    <a href="#kol" class="btn-secondary" data-en="KOL Partnership" data-id="Kemitraan KOL">KOL Partnership</a>
+  </div>
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <div class="hero-stat-num">100%</div>
+      <div class="hero-stat-label" data-en="Original Products" data-id="Produk Original">Original Products</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">12M</div>
+      <div class="hero-stat-label" data-en="Warranty" data-id="Garansi">Warranty</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">24/7</div>
+      <div class="hero-stat-label" data-en="After-Sales Support" data-id="Dukungan Purna Jual">After-Sales Support</div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-grid">
+    <div class="about-visual reveal">
+      <div class="about-card">
+        <div class="about-card-logo">T+</div>
+        <p class="about-card-desc" data-en="Tekno Plus is an authorized distributor of Insta360 in Indonesia, operating across major e-commerce platforms including Shopee and Tokopedia. We are committed to bringing authentic technology products with full after-sales support." data-id="Tekno Plus adalah distributor resmi Insta360 di Indonesia, beroperasi di platform e-commerce utama termasuk Shopee dan Tokopedia. Kami berkomitmen menghadirkan produk teknologi asli dengan dukungan purna jual penuh.">
+          Tekno Plus is an authorized distributor of Insta360 in Indonesia, operating across major e-commerce platforms including Shopee and Tokopedia. We are committed to bringing authentic technology products with full after-sales support.
+        </p>
+        <span class="about-tag" data-en="AUTHORIZED RESELLER" data-id="RESELLER RESMI">AUTHORIZED RESELLER</span>
+      </div>
+    </div>
+    <div class="reveal">
+      <div class="section-label" data-en="WHO WE ARE" data-id="SIAPA KAMI">WHO WE ARE</div>
+      <h2 class="section-title" data-en="Technology You Can Trust" data-id="Teknologi Yang Bisa Dipercaya">Technology You Can Trust</h2>
+      <div class="section-divider"></div>
+      <p class="section-desc" data-en="We are more than just a reseller. Tekno Plus is a community-driven tech brand that serves individual consumers, content creators, and enterprise clients across Indonesia." data-id="Kami lebih dari sekadar reseller. Tekno Plus adalah brand teknologi berbasis komunitas yang melayani konsumen individual, kreator konten, dan klien korporat di seluruh Indonesia.">
+        We are more than just a reseller. Tekno Plus is a community-driven tech brand that serves individual consumers, content creators, and enterprise clients across Indonesia.
+      </p>
+      <ul class="value-list">
+        <li><span class="value-icon">✦</span><span data-en="Official warranty coverage for all products sold" data-id="Garansi resmi untuk semua produk yang dijual">Official warranty coverage for all products sold</span></li>
+        <li><span class="value-icon">✦</span><span data-en="Expert pre-sales consultation and product matching" data-id="Konsultasi pra-penjualan ahli dan penyesuaian produk">Expert pre-sales consultation and product matching</span></li>
+        <li><span class="value-icon">✦</span><span data-en="Fast same-day shipping from Jakarta warehouse" data-id="Pengiriman cepat di hari yang sama dari gudang Jakarta">Fast same-day shipping from Jakarta warehouse</span></li>
+        <li><span class="value-icon">✦</span><span data-en="Dedicated support for KOLs and business clients" data-id="Dukungan khusus untuk KOL dan klien bisnis">Dedicated support for KOLs and business clients</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section id="products">
+  <div class="products-header reveal">
+    <div class="section-label" data-en="OUR PRODUCTS" data-id="PRODUK KAMI">OUR PRODUCTS</div>
+    <h2 class="section-title" data-en="Insta360 Official Lineup" data-id="Lini Resmi Insta360">Insta360 Official Lineup</h2>
+    <div class="section-divider"></div>
+    <p class="section-desc" data-en="From 360° cameras to action cams — we carry the complete Insta360 range with official Indonesian warranty." data-id="Dari kamera 360° hingga action cam — kami menyediakan lini lengkap Insta360 dengan garansi resmi Indonesia.">
+      From 360° cameras to action cams — we carry the complete Insta360 range with official Indonesian warranty.
+    </p>
+  </div>
+  <div class="products-grid">
+    <div class="product-card reveal">
+      <span class="product-icon">🎥</span>
+      <div class="product-name">Insta360 X Series</div>
+      <p class="product-desc" data-en="The flagship 360° camera series. Capture every angle with stunning 8K resolution and AI-powered editing." data-id="Seri kamera 360° unggulan. Abadikan setiap sudut dengan resolusi 8K yang memukau dan editing berbasis AI.">The flagship 360° camera series. Capture every angle with stunning 8K resolution and AI-powered editing.</p>
+      <span class="product-badge" data-en="BEST SELLER" data-id="TERLARIS">BEST SELLER</span>
+    </div>
+    <div class="product-card reveal">
+      <span class="product-icon">🏄</span>
+      <div class="product-name">Insta360 GO Series</div>
+      <p class="product-desc" data-en="Ultra-compact action camera for everyday adventures. Wearable, waterproof, and incredibly versatile." data-id="Kamera aksi ultra-kompak untuk petualangan sehari-hari. Dapat dipakai, tahan air, dan sangat serbaguna.">Ultra-compact action camera for everyday adventures. Wearable, waterproof, and incredibly versatile.</p>
+      <span class="product-badge" data-en="POPULAR" data-id="POPULER">POPULAR</span>
+    </div>
+    <div class="product-card reveal">
+      <span class="product-icon">🎬</span>
+      <div class="product-name">Insta360 ACE Series</div>
+      <p class="product-desc" data-en="Professional-grade action camera with FlowState stabilization and 4K HDR. Built for serious creators." data-id="Kamera aksi kelas profesional dengan stabilisasi FlowState dan 4K HDR. Dirancang untuk kreator serius.">Professional-grade action camera with FlowState stabilization and 4K HDR. Built for serious creators.</p>
+      <span class="product-badge" data-en="PRO CHOICE" data-id="PILIHAN PRO">PRO CHOICE</span>
+    </div>
+    <div class="product-card reveal">
+      <span class="product-icon">🔭</span>
+      <div class="product-name" data-en="Insta360 Flow Series" data-id="Insta360 Flow Series">Insta360 Flow Series</div>
+      <p class="product-desc" data-en="AI-powered gimbal stabilizer for smartphones. Perfect for vloggers and mobile content creators." data-id="Gimbal stabilizer bertenaga AI untuk smartphone. Sempurna untuk vlogger dan kreator konten mobile.">AI-powered gimbal stabilizer for smartphones. Perfect for vloggers and mobile content creators.</p>
+      <span class="product-badge" data-en="NEW" data-id="BARU">NEW</span>
+    </div>
+    <div class="product-card reveal">
+      <span class="product-icon">📦</span>
+      <div class="product-name" data-en="Bundle Packages" data-id="Paket Bundle">Bundle Packages</div>
+      <p class="product-desc" data-en="Camera + accessories bundles curated for every use case — vlog, travel, sports, and business." data-id="Bundle kamera + aksesori yang dikurasi untuk setiap kebutuhan — vlog, travel, olahraga, dan bisnis.">Camera + accessories bundles curated for every use case — vlog, travel, sports, and business.</p>
+      <span class="product-badge" data-en="EXCLUSIVE" data-id="EKSKLUSIF">EXCLUSIVE</span>
+    </div>
+    <div class="product-card reveal">
+      <span class="product-icon">🛠️</span>
+      <div class="product-name" data-en="Accessories & Parts" data-id="Aksesori & Suku Cadang">Accessories & Parts</div>
+      <p class="product-desc" data-en="Full range of official Insta360 accessories: mounts, cases, batteries, lenses, and more." data-id="Rangkaian lengkap aksesori resmi Insta360: mount, casing, baterai, lensa, dan lainnya.">Full range of official Insta360 accessories: mounts, cases, batteries, lenses, and more.</p>
+      <span class="product-badge" data-en="IN STOCK" data-id="TERSEDIA">IN STOCK</span>
+    </div>
+  </div>
+</section>
+
+<!-- KOL -->
+<section id="kol">
+  <div class="kol-inner">
+    <div class="reveal">
+      <div class="section-label" data-en="KOL PARTNERSHIP" data-id="KEMITRAAN KOL">KOL PARTNERSHIP</div>
+      <h2 class="section-title" data-en="Create Together, Grow Together" data-id="Berkreasi Bersama, Tumbuh Bersama">Create Together,<br>Grow Together</h2>
+      <div class="section-divider"></div>
+      <p class="section-desc" data-en="We partner with content creators, influencers, and KOLs across Indonesia to co-create authentic content and grow a passionate community around Insta360." data-id="Kami bermitra dengan kreator konten, influencer, dan KOL di seluruh Indonesia untuk bersama-sama membuat konten autentik dan membangun komunitas yang penuh semangat di sekitar Insta360.">
+        We partner with content creators, influencers, and KOLs across Indonesia to co-create authentic content and grow a passionate community around Insta360.
+      </p>
+      <div class="kol-benefits">
+        <div class="kol-benefit">
+          <span class="kol-benefit-icon">📸</span>
+          <div class="kol-benefit-title" data-en="Product Loans" data-id="Pinjaman Produk">Product Loans</div>
+          <p class="kol-benefit-desc" data-en="Free product access for review and content creation" data-id="Akses produk gratis untuk review dan pembuatan konten">Free product access for review and content creation</p>
+        </div>
+        <div class="kol-benefit">
+          <span class="kol-benefit-icon">💰</span>
+          <div class="kol-benefit-title" data-en="Commission Program" data-id="Program Komisi">Commission Program</div>
+          <p class="kol-benefit-desc" data-en="Earn commissions on every sale through your referral" data-id="Dapatkan komisi dari setiap penjualan melalui referral Anda">Earn commissions on every sale through your referral</p>
+        </div>
+        <div class="kol-benefit">
+          <span class="kol-benefit-icon">🤝</span>
+          <div class="kol-benefit-title" data-en="Co-branding" data-id="Co-branding">Co-branding</div>
+          <p class="kol-benefit-desc" data-en="Joint campaigns and exclusive bundle collabs" data-id="Kampanye bersama dan kolaborasi bundle eksklusif">Joint campaigns and exclusive bundle collabs</p>
+        </div>
+        <div class="kol-benefit">
+          <span class="kol-benefit-icon">⚡</span>
+          <div class="kol-benefit-title" data-en="Priority Support" data-id="Dukungan Prioritas">Priority Support</div>
+          <p class="kol-benefit-desc" data-en="Dedicated account manager and fast response" data-id="Manajer akun khusus dan respons cepat">Dedicated account manager and fast response</p>
+        </div>
+      </div>
+    </div>
+    <div class="reveal">
+      <div class="kol-cta-box">
+        <h3 data-en="Ready to Partner with Us?" data-id="Siap Bermitra dengan Kami?">Ready to Partner with Us?</h3>
+        <p data-en="Whether you're a micro-influencer or a major content house, we have a partnership model that works for you. Let's create amazing content together." data-id="Baik Anda micro-influencer maupun konten kreator besar, kami memiliki model kemitraan yang sesuai untuk Anda. Mari buat konten luar biasa bersama.">
+          Whether you're a micro-influencer or a major content house, we have a partnership model that works for you. Let's create amazing content together.
+        </p>
+        <a href="#contact" class="btn-primary" data-en="Apply for Partnership" data-id="Daftar Kemitraan">Apply for Partnership</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST / WHY US -->
+<section id="trust">
+  <div class="trust-inner">
+    <div class="reveal">
+      <div class="section-label" data-en="WHY CHOOSE US" data-id="MENGAPA PILIH KAMI">WHY CHOOSE US</div>
+      <h2 class="section-title" data-en="The Tekno Plus Difference" data-id="Perbedaan Tekno Plus">The Tekno Plus Difference</h2>
+      <div class="section-divider" style="margin: 1rem auto 0;"></div>
+    </div>
+    <div class="trust-grid">
+      <div class="trust-card reveal">
+        <span class="trust-icon">🛡️</span>
+        <div class="trust-title" data-en="Official Warranty" data-id="Garansi Resmi">Official Warranty</div>
+        <p class="trust-desc" data-en="12 months official warranty on all products sold through Tekno Plus" data-id="Garansi resmi 12 bulan untuk semua produk yang dijual melalui Tekno Plus">12 months official warranty on all products sold through Tekno Plus</p>
+      </div>
+      <div class="trust-card reveal">
+        <span class="trust-icon">✅</span>
+        <div class="trust-title" data-en="100% Authentic" data-id="100% Asli">100% Authentic</div>
+        <p class="trust-desc" data-en="Direct supply chain from Insta360 — guaranteed original, no grey market" data-id="Rantai pasokan langsung dari Insta360 — dijamin asli, bukan produk grey market">Direct supply chain from Insta360 — guaranteed original, no grey market</p>
+      </div>
+      <div class="trust-card reveal">
+        <span class="trust-icon">🚀</span>
+        <div class="trust-title" data-en="Same-Day Shipping" data-id="Pengiriman Hari Ini">Same-Day Shipping</div>
+        <p class="trust-desc" data-en="Order before 2PM and your item ships the same day from our Jakarta warehouse" data-id="Pesan sebelum pukul 14.00 dan barang dikirim hari ini dari gudang Jakarta kami">Order before 2PM and your item ships the same day from our Jakarta warehouse</p>
+      </div>
+      <div class="trust-card reveal">
+        <span class="trust-icon">💬</span>
+        <div class="trust-title" data-en="24/7 Support" data-id="Dukungan 24/7">24/7 Support</div>
+        <p class="trust-desc" data-en="Our team is always ready to help via WhatsApp, chat, or phone — before and after purchase" data-id="Tim kami selalu siap membantu melalui WhatsApp, chat, atau telepon — sebelum dan sesudah pembelian">Our team is always ready to help via WhatsApp, chat, or phone — before and after purchase</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-inner">
+    <div class="reveal">
+      <div class="section-label" data-en="GET IN TOUCH" data-id="HUBUNGI KAMI">GET IN TOUCH</div>
+      <h2 class="section-title" data-en="Let's Talk" data-id="Mari Bicara">Let's Talk</h2>
+      <div class="section-divider"></div>
+      <p class="section-desc" data-en="Have questions about products, pricing, or partnerships? Reach out through any of these channels." data-id="Punya pertanyaan tentang produk, harga, atau kemitraan? Hubungi kami melalui salah satu saluran berikut.">
+        Have questions about products, pricing, or partnerships? Reach out through any of these channels.
+      </p>
+      <div class="contact-items">
+        <a href="https://wa.me/62" class="contact-item">
+          <span class="contact-item-icon">💬</span>
+          <div>
+            <div class="contact-item-label">WhatsApp</div>
+            <div class="contact-item-value">+62 xxx-xxxx-xxxx</div>
+          </div>
+        </a>
+        <a href="https://shopee.co.id" class="contact-item">
+          <span class="contact-item-icon">🛍️</span>
+          <div>
+            <div class="contact-item-label">Shopee</div>
+            <div class="contact-item-value">@TeknoPlus</div>
+          </div>
+        </a>
+        <a href="https://tokopedia.com" class="contact-item">
+          <span class="contact-item-icon">🛒</span>
+          <div>
+            <div class="contact-item-label">Tokopedia</div>
+            <div class="contact-item-value">Tekno Plus Official</div>
+          </div>
+        </a>
+        <a href="mailto:hello@teknoplus.id" class="contact-item">
+          <span class="contact-item-icon">📧</span>
+          <div>
+            <div class="contact-item-label">Email</div>
+            <div class="contact-item-value">hello@teknoplus.id</div>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="reveal">
+      <div class="warranty-box">
+        <span class="warranty-shield">🛡️</span>
+        <div class="warranty-title" data-en="Official Indonesian Warranty" data-id="Garansi Resmi Indonesia">Official Indonesian Warranty</div>
+        <p class="warranty-desc" data-en="Every product purchased from Tekno Plus comes with an official 12-month warranty valid in Indonesia. Our dedicated after-sales team handles all warranty claims quickly and professionally." data-id="Setiap produk yang dibeli dari Tekno Plus dilengkapi dengan garansi resmi 12 bulan yang berlaku di Indonesia. Tim purna jual kami yang berdedikasi menangani semua klaim garansi dengan cepat dan profesional.">
+          Every product purchased from Tekno Plus comes with an official 12-month warranty valid in Indonesia. Our dedicated after-sales team handles all warranty claims quickly and professionally.
+        </p>
+        <span class="warranty-tag" data-en="GARANSI RESMI INDONESIA" data-id="GARANSI RESMI INDONESIA">GARANSI RESMI INDONESIA</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">TEKNO PLUS</div>
+  <div class="footer-copy" data-en="© 2025 Tekno Plus. All rights reserved." data-id="© 2025 Tekno Plus. Semua hak dilindungi.">© 2025 Tekno Plus. All rights reserved.</div>
+  <div class="footer-links">
+    <a href="#about" data-en="About" data-id="Tentang">About</a>
+    <a href="#products" data-en="Products" data-id="Produk">Products</a>
+    <a href="#kol" data-en="Partnership" data-id="Kemitraan">Partnership</a>
+    <a href="#contact" data-en="Contact" data-id="Kontak">Contact</a>
+  </div>
+</footer>
+
+<script>
+  // Language switch
+  let currentLang = 'en';
+
+  function setLang(lang) {
+    currentLang = lang;
+    document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+    document.querySelector(`.lang-btn[onclick="setLang('${lang}')"]`).classList.add('active');
+
+    document.querySelectorAll('[data-en]').forEach(el => {
+      el.textContent = el.getAttribute(`data-${lang}`);
+    });
+  }
+
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  reveals.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
