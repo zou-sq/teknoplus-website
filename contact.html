@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact – Tekno Plus</title>
+<meta name="description" content="Contact Tekno Plus via WhatsApp, email, or find us on Shopee and Tokopedia.">
+<link rel="stylesheet" href="style.css">
+<style>
+  .contact-section { max-width: 1000px; margin: 0 auto; padding: 4rem 4vw 6rem; }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    margin-top: 3rem;
+  }
+
+  /* CHANNELS */
+  .channel-card {
+    background: linear-gradient(135deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+    border: 1px solid var(--white-10);
+    border-radius: 16px;
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    text-decoration: none;
+    color: var(--white);
+    transition: all 0.3s;
+    margin-bottom: 1rem;
+  }
+  .channel-card:hover {
+    border-color: rgba(21,87,232,0.5);
+    transform: translateX(6px);
+    background: rgba(21,87,232,0.1);
+  }
+  .channel-icon-wrap {
+    width: 56px; height: 56px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    flex-shrink: 0;
+  }
+  .channel-wa { background: rgba(37,211,102,0.15); border: 1px solid rgba(37,211,102,0.3); }
+  .channel-email { background: rgba(21,87,232,0.15); border: 1px solid rgba(21,87,232,0.3); }
+  .channel-label {
+    font-size: 0.72rem;
+    color: var(--white-50);
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 0.3rem;
+    font-family: 'Barlow Condensed', sans-serif;
+  }
+  .channel-value { font-size: 1rem; font-weight: 500; }
+  .channel-note { font-size: 0.78rem; color: var(--white-50); margin-top: 0.2rem; }
+
+  /* PLATFORMS */
+  .platforms-section { margin-top: 0; }
+  .platform-card {
+    background: linear-gradient(135deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+    border: 1px solid var(--white-10);
+    border-radius: 16px;
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 1rem;
+    transition: all 0.3s;
+  }
+  .platform-card:hover {
+    border-color: rgba(21,87,232,0.4);
+    transform: translateX(6px);
+  }
+  .platform-icon-wrap {
+    width: 56px; height: 56px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    flex-shrink: 0;
+  }
+  .platform-shopee { background: rgba(238,77,45,0.15); border: 1px solid rgba(238,77,45,0.3); }
+  .platform-tokopedia { background: rgba(66,181,73,0.15); border: 1px solid rgba(66,181,73,0.3); }
+  .platform-label {
+    font-size: 0.72rem;
+    color: var(--white-50);
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 0.3rem;
+    font-family: 'Barlow Condensed', sans-serif;
+  }
+  .platform-value { font-size: 1rem; font-weight: 600; }
+  .platform-note { font-size: 0.78rem; color: var(--white-50); margin-top: 0.2rem; }
+
+  /* WARRANTY BOX */
+  .warranty-box {
+    background: linear-gradient(135deg, rgba(21,87,232,0.2), rgba(0,212,255,0.08));
+    border: 1px solid rgba(21,87,232,0.3);
+    border-radius: 20px;
+    padding: 2.5rem;
+    text-align: center;
+    margin-top: 3rem;
+  }
+  .warranty-shield { font-size: 3.5rem; display: block; margin-bottom: 1rem; }
+  .warranty-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 1.5rem;
+    margin-bottom: 0.6rem;
+  }
+  .warranty-desc { color: var(--white-80); font-size: 0.9rem; line-height: 1.7; }
+  .warranty-tag {
+    display: inline-block;
+    margin-top: 1.2rem;
+    background: linear-gradient(135deg, var(--blue-bright), var(--blue-electric));
+    padding: 0.4rem 1.2rem;
+    border-radius: 6px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 0.9rem;
+    letter-spacing: 0.1em;
+  }
+
+  /* RESPONSE TIME */
+  .response-box {
+    background: var(--white-10);
+    border: 1px solid var(--white-10);
+    border-radius: 14px;
+    padding: 1.5rem 2rem;
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .response-icon { font-size: 1.8rem; flex-shrink: 0; }
+  .response-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    margin-bottom: 0.2rem;
+  }
+  .response-desc { color: var(--white-50); font-size: 0.82rem; }
+
+  @media (max-width: 768px) {
+    .contact-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="lang-switcher">
+  <button class="lang-btn" onclick="setLang('en')">EN</button>
+  <button class="lang-btn" onclick="setLang('id')">ID</button>
+</div>
+
+<nav>
+  <a href="index.html" class="nav-logo">TEKNO PLUS</a>
+  <ul class="nav-links">
+    <li><a href="index.html" data-en="Home" data-id="Beranda">Home</a></li>
+    <li><a href="products.html" data-en="Products" data-id="Produk">Products</a></li>
+    <li><a href="kol.html" data-en="KOL Partnership" data-id="Kemitraan KOL">KOL Partnership</a></li>
+    <li><a href="contact.html" class="nav-cta active" data-en="Contact Us" data-id="Hubungi Kami">Contact Us</a></li>
+  </ul>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-bg"></div>
+  <div class="page-hero-grid"></div>
+  <div class="section-label" style="position:relative;" data-en="WE'RE HERE TO HELP" data-id="KAMI SIAP MEMBANTU">WE'RE HERE TO HELP</div>
+  <h1 class="page-hero-title" data-en="Contact Us" data-id="Hubungi Kami">Contact Us</h1>
+  <p class="page-hero-sub" data-en="Reach us anytime — we respond fast" data-id="Hubungi kami kapan saja — kami merespons dengan cepat">Reach us anytime — we respond fast</p>
+</div>
+
+<div class="contact-section">
+  <div class="contact-grid">
+
+    <!-- LEFT: DIRECT CONTACT -->
+    <div>
+      <div class="reveal">
+        <div class="section-label" data-en="DIRECT CONTACT" data-id="KONTAK LANGSUNG">DIRECT CONTACT</div>
+        <h2 class="section-title" data-en="Get in Touch" data-id="Hubungi Kami">Get in Touch</h2>
+        <div class="section-divider"></div>
+      </div>
+
+      <a href="https://wa.me/628211969822" class="channel-card reveal" target="_blank">
+        <div class="channel-icon-wrap channel-wa">💬</div>
+        <div>
+          <div class="channel-label">WhatsApp</div>
+          <div class="channel-value">+62 821-1969-822</div>
+          <div class="channel-note" data-en="Fastest response — tap to open WhatsApp" data-id="Respons tercepat — ketuk untuk membuka WhatsApp">Fastest response — tap to open WhatsApp</div>
+        </div>
+      </a>
+
+      <a href="mailto:contact@teknoplus.co.id" class="channel-card reveal">
+        <div class="channel-icon-wrap channel-email">📧</div>
+        <div>
+          <div class="channel-label">Email</div>
+          <div class="channel-value">contact@teknoplus.co.id</div>
+          <div class="channel-note" data-en="For formal inquiries and B2B partnerships" data-id="Untuk pertanyaan formal dan kemitraan B2B">For formal inquiries and B2B partnerships</div>
+        </div>
+      </a>
+
+      <div class="response-box reveal">
+        <span class="response-icon">⚡</span>
+        <div>
+          <div class="response-title" data-en="Fast Response Guaranteed" data-id="Respons Cepat Terjamin">Fast Response Guaranteed</div>
+          <p class="response-desc" data-en="WhatsApp: typically within 1 hour. Email: within 1 business day." data-id="WhatsApp: biasanya dalam 1 jam. Email: dalam 1 hari kerja.">WhatsApp: typically within 1 hour. Email: within 1 business day.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT: PLATFORMS + WARRANTY -->
+    <div>
+      <div class="reveal">
+        <div class="section-label" data-en="FIND US ON" data-id="TEMUKAN KAMI DI">FIND US ON</div>
+        <h2 class="section-title" data-en="Our Stores" data-id="Toko Kami">Our Stores</h2>
+        <div class="section-divider"></div>
+      </div>
+
+      <div class="platform-card reveal">
+        <div class="platform-icon-wrap platform-shopee">🛍️</div>
+        <div>
+          <div class="platform-label">Shopee</div>
+          <div class="platform-value">Tekno Plus Official</div>
+          <div class="platform-note" data-en="Search 'Tekno Plus' on Shopee" data-id="Cari 'Tekno Plus' di Shopee">Search 'Tekno Plus' on Shopee</div>
+        </div>
+      </div>
+
+      <div class="platform-card reveal">
+        <div class="platform-icon-wrap platform-tokopedia">🛒</div>
+        <div>
+          <div class="platform-label">Tokopedia</div>
+          <div class="platform-value">Tekno Plus Official</div>
+          <div class="platform-note" data-en="Search 'Tekno Plus' on Tokopedia" data-id="Cari 'Tekno Plus' di Tokopedia">Search 'Tekno Plus' on Tokopedia</div>
+        </div>
+      </div>
+
+      <div class="warranty-box reveal">
+        <span class="warranty-shield">🛡️</span>
+        <div class="warranty-title" data-en="Official Indonesian Warranty" data-id="Garansi Resmi Indonesia">Official Indonesian Warranty</div>
+        <p class="warranty-desc" data-en="Every product from Tekno Plus comes with a 12-month official warranty. Contact us anytime for warranty claims and after-sales support." data-id="Setiap produk dari Tekno Plus dilengkapi garansi resmi 12 bulan. Hubungi kami kapan saja untuk klaim garansi dan dukungan purna jual.">
+          Every product from Tekno Plus comes with a 12-month official warranty. Contact us anytime for warranty claims and after-sales support.
+        </p>
+        <span class="warranty-tag">GARANSI RESMI INDONESIA</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  <a href="index.html" class="footer-logo">TEKNO PLUS</a>
+  <div class="footer-copy" data-en="© 2025 Tekno Plus. All rights reserved." data-id="© 2025 Tekno Plus. Semua hak dilindungi.">© 2025 Tekno Plus. All rights reserved.</div>
+  <div class="footer-links">
+    <a href="index.html" data-en="Home" data-id="Beranda">Home</a>
+    <a href="products.html" data-en="Products" data-id="Produk">Products</a>
+    <a href="kol.html" data-en="Partnership" data-id="Kemitraan">Partnership</a>
+    <a href="contact.html" data-en="Contact" data-id="Kontak">Contact</a>
+  </div>
+</footer>
+
+<a href="https://wa.me/628211969822" class="wa-float" target="_blank" title="WhatsApp">💬</a>
+<script src="main.js"></script>
+</body>
+</html>

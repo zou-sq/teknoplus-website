@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Products – Tekno Plus</title>
+<meta name="description" content="Browse the complete Insta360 product lineup available at Tekno Plus Indonesia — official warranty guaranteed.">
+<link rel="stylesheet" href="style.css">
+<style>
+  #products-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 4rem 4vw 6rem;
+  }
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+  .product-card {
+    background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+    border: 1px solid var(--white-10);
+    border-radius: 16px;
+    padding: 2rem;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+  .product-card::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, rgba(21,87,232,0.15), transparent);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .product-card:hover {
+    border-color: rgba(21,87,232,0.5);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(21,87,232,0.2);
+  }
+  .product-card:hover::before { opacity: 1; }
+  .product-icon { font-size: 2.5rem; margin-bottom: 1rem; display: block; }
+  .product-name {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.03em;
+  }
+  .product-desc { color: var(--white-50); font-size: 0.85rem; line-height: 1.6; }
+  .product-badge {
+    display: inline-block;
+    margin-top: 1rem;
+    background: rgba(0,212,255,0.1);
+    border: 1px solid rgba(0,212,255,0.3);
+    color: var(--accent);
+    padding: 0.25rem 0.7rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    font-family: 'Barlow Condensed', sans-serif;
+    letter-spacing: 0.05em;
+  }
+  .product-cta {
+    margin-top: 1.2rem;
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+  .product-cta a {
+    font-size: 0.78rem;
+    padding: 0.35rem 0.9rem;
+    border-radius: 6px;
+    text-decoration: none;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    transition: all 0.2s;
+  }
+  .cta-shopee {
+    background: rgba(238,77,45,0.15);
+    border: 1px solid rgba(238,77,45,0.3);
+    color: #ff6b45;
+  }
+  .cta-shopee:hover { background: rgba(238,77,45,0.25); }
+  .cta-tokopedia {
+    background: rgba(66,181,73,0.15);
+    border: 1px solid rgba(66,181,73,0.3);
+    color: #4db356;
+  }
+  .cta-tokopedia:hover { background: rgba(66,181,73,0.25); }
+
+  .warranty-banner {
+    background: linear-gradient(135deg, rgba(21,87,232,0.2), rgba(0,212,255,0.1));
+    border: 1px solid rgba(21,87,232,0.3);
+    border-radius: 16px;
+    padding: 2rem 2.5rem;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin-top: 4rem;
+    flex-wrap: wrap;
+  }
+  .warranty-banner-icon { font-size: 3rem; flex-shrink: 0; }
+  .warranty-banner-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 1.5rem;
+    margin-bottom: 0.3rem;
+  }
+  .warranty-banner-desc { color: var(--white-80); font-size: 0.9rem; line-height: 1.6; }
+
+  @media (max-width: 768px) {
+    .products-grid { grid-template-columns: 1fr; }
+    .warranty-banner { flex-direction: column; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<div class="lang-switcher">
+  <button class="lang-btn" onclick="setLang('en')">EN</button>
+  <button class="lang-btn" onclick="setLang('id')">ID</button>
+</div>
+
+<nav>
+  <a href="index.html" class="nav-logo">TEKNO PLUS</a>
+  <ul class="nav-links">
+    <li><a href="index.html" data-en="Home" data-id="Beranda">Home</a></li>
+    <li><a href="products.html" class="active" data-en="Products" data-id="Produk">Products</a></li>
+    <li><a href="kol.html" data-en="KOL Partnership" data-id="Kemitraan KOL">KOL Partnership</a></li>
+    <li><a href="contact.html" class="nav-cta" data-en="Contact Us" data-id="Hubungi Kami">Contact Us</a></li>
+  </ul>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-bg"></div>
+  <div class="page-hero-grid"></div>
+  <div class="section-label" style="position:relative;" data-en="OFFICIAL INSTA360 LINEUP" data-id="LINI RESMI INSTA360">OFFICIAL INSTA360 LINEUP</div>
+  <h1 class="page-hero-title" data-en="Our Products" data-id="Produk Kami">Our Products</h1>
+  <p class="page-hero-sub" data-en="Complete Insta360 range with official Indonesian warranty" data-id="Lini lengkap Insta360 dengan garansi resmi Indonesia">Complete Insta360 range with official Indonesian warranty</p>
+</div>
+
+<div id="products-section">
+  <div class="products-grid">
+    <div class="product-card reveal">
+      <span class="product-icon">🎥</span>
+      <div class="product-name">Insta360 X Series</div>
+      <p class="product-desc" data-en="The flagship 360° camera series. Capture every angle with stunning 8K resolution and AI-powered editing." data-id="Seri kamera 360° unggulan. Abadikan setiap sudut dengan resolusi 8K yang memukau dan editing berbasis AI.">The flagship 360° camera series. Capture every angle with stunning 8K resolution and AI-powered editing.</p>
+      <span class="product-badge" data-en="BEST SELLER" data-id="TERLARIS">BEST SELLER</span>
+      <div class="product-cta">
+        <a href="#" class="cta-shopee">Shopee</a>
+        <a href="#" class="cta-tokopedia">Tokopedia</a>
+      </div>
+    </div>
+    <div class="product-card reveal">
+      <span class="product-icon">🏄</span>
+      <div class="product-name">Insta360 GO Series</div>
+      <p class="product-desc" data-en="Ultra-compact action camera for everyday adventures. Wearable, waterproof, and incredibly versatile." data-id="Kamera aksi ultra-kompak untuk petualangan sehari-hari. Dapat dipakai, tahan air, dan sangat serbaguna.">Ultra-compact action camera for everyday adventures. Wearable, waterproof, and incredibly versatile.</p>
+      <span class="product-badge" data-en="POPULAR" data-id="POPULER">POPULAR</span>
+      <div class="product-cta">
+        <a href="#" class="cta-shopee">Shopee</a>
+        <a href="#" class="cta-tokopedia">Tokopedia</a>
+      </div>
+    </div>
+    <div class="product-card reveal">
+      <span class="product-icon">🎬</span>
+      <div class="product-name">Insta360 ACE Series</div>
+      <p class="product-desc" data-en="Professional-grade action camera with FlowState stabilization and 4K HDR. Built for serious creators." data-id="Kamera aksi kelas profesional dengan stabilisasi FlowState dan 4K HDR. Dirancang untuk kreator serius.">Professional-grade action camera with FlowState stabilization and 4K HDR. Built for serious creators.</p>
+      <span class="product-badge" data-en="PRO CHOICE" data-id="PILIHAN PRO">PRO CHOICE</span>
+      <div class="product-cta">
+        <a href="#" class="cta-shopee">Shopee</a>
+        <a href="#" class="cta-tokopedia">Tokopedia</a>
+      </div>
+    </div>
+    <div class="product-card reveal">
+      <span class="product-icon">🔭</span>
+      <div class="product-name">Insta360 Flow Series</div>
+      <p class="product-desc" data-en="AI-powered gimbal stabilizer for smartphones. Perfect for vloggers and mobile content creators." data-id="Gimbal stabilizer bertenaga AI untuk smartphone. Sempurna untuk vlogger dan kreator konten mobile.">AI-powered gimbal stabilizer for smartphones. Perfect for vloggers and mobile content creators.</p>
+      <span class="product-badge" data-en="NEW" data-id="BARU">NEW</span>
+      <div class="product-cta">
+        <a href="#" class="cta-shopee">Shopee</a>
+        <a href="#" class="cta-tokopedia">Tokopedia</a>
+      </div>
+    </div>
+    <div class="product-card reveal">
+      <span class="product-icon">📦</span>
+      <div class="product-name" data-en="Bundle Packages" data-id="Paket Bundle">Bundle Packages</div>
+      <p class="product-desc" data-en="Camera + accessories bundles curated for every use case — vlog, travel, sports, and business." data-id="Bundle kamera + aksesori yang dikurasi untuk setiap kebutuhan — vlog, travel, olahraga, dan bisnis.">Camera + accessories bundles curated for every use case — vlog, travel, sports, and business.</p>
+      <span class="product-badge" data-en="EXCLUSIVE" data-id="EKSKLUSIF">EXCLUSIVE</span>
+      <div class="product-cta">
+        <a href="#" class="cta-shopee">Shopee</a>
+        <a href="#" class="cta-tokopedia">Tokopedia</a>
+      </div>
+    </div>
+    <div class="product-card reveal">
+      <span class="product-icon">🛠️</span>
+      <div class="product-name" data-en="Accessories & Parts" data-id="Aksesori & Suku Cadang">Accessories & Parts</div>
+      <p class="product-desc" data-en="Full range of official Insta360 accessories: mounts, cases, batteries, lenses, and more." data-id="Rangkaian lengkap aksesori resmi Insta360: mount, casing, baterai, lensa, dan lainnya.">Full range of official Insta360 accessories: mounts, cases, batteries, lenses, and more.</p>
+      <span class="product-badge" data-en="IN STOCK" data-id="TERSEDIA">IN STOCK</span>
+      <div class="product-cta">
+        <a href="#" class="cta-shopee">Shopee</a>
+        <a href="#" class="cta-tokopedia">Tokopedia</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="warranty-banner reveal">
+    <span class="warranty-banner-icon">🛡️</span>
+    <div>
+      <div class="warranty-banner-title" data-en="All Products Come with Official Indonesian Warranty" data-id="Semua Produk Dilengkapi Garansi Resmi Indonesia">All Products Come with Official Indonesian Warranty</div>
+      <p class="warranty-banner-desc" data-en="12 months warranty on every product purchased through Tekno Plus. Our after-sales team handles all claims quickly and professionally." data-id="Garansi 12 bulan untuk setiap produk yang dibeli melalui Tekno Plus. Tim purna jual kami menangani semua klaim dengan cepat dan profesional.">12 months warranty on every product purchased through Tekno Plus. Our after-sales team handles all claims quickly and professionally.</p>
+    </div>
+    <a href="contact.html" class="btn-primary" style="flex-shrink:0;" data-en="Contact Us" data-id="Hubungi Kami">Contact Us</a>
+  </div>
+</div>
+
+<footer>
+  <a href="index.html" class="footer-logo">TEKNO PLUS</a>
+  <div class="footer-copy" data-en="© 2025 Tekno Plus. All rights reserved." data-id="© 2025 Tekno Plus. Semua hak dilindungi.">© 2025 Tekno Plus. All rights reserved.</div>
+  <div class="footer-links">
+    <a href="index.html" data-en="Home" data-id="Beranda">Home</a>
+    <a href="products.html" data-en="Products" data-id="Produk">Products</a>
+    <a href="kol.html" data-en="Partnership" data-id="Kemitraan">Partnership</a>
+    <a href="contact.html" data-en="Contact" data-id="Kontak">Contact</a>
+  </div>
+</footer>
+
+<a href="https://wa.me/628211969822" class="wa-float" target="_blank" title="WhatsApp">💬</a>
+<script src="main.js"></script>
+</body>
+</html>
